@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Cart } from "../model/cart.model";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: "store",
@@ -10,7 +10,8 @@ import { ProductRepository } from "../model/product.repository";
 })
 export class StoreComponent {
   constructor(private repository: ProductRepository,
-    private cart: Cart) {
+    private cart: Cart,
+    private router: Router) {
 
   }
 
@@ -48,6 +49,7 @@ export class StoreComponent {
 
   addProductToCart(product: Product) {
     this.cart.addLine(product);
+    this.router.navigateByUrl("/cart");
   }
 
   // get pageNumbers(): number[] {
